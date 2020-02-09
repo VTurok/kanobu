@@ -1,4 +1,4 @@
-{% extends templates/base.html %}
+{% extends 'base.html' %}
 
 {% block title %}
     Статьи - {{ block.super }}
@@ -18,6 +18,6 @@
                 Пока это заготовка
             </div>
         </div>
-    {% end for %}
+    {% endfor %}
 
 {% endblock %}
