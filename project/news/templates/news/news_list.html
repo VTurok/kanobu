@@ -1,0 +1,23 @@
+{% extends templates/base.html %}
+
+{% block title %}
+    Новости - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-5">Новости</h1>
+    {% for element in news %}
+        <div class="card mb-4">
+          <h5 class="card-header">Автор: {{ element.author }}; дата публикации: {{ element.date_pub }}</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{ element.title }}</h5>
+            <p class="card-text">{{ element.body|truncatewords:20 }}</p>
+            <a href="#" class="btn btn-primary">Читать</a>
+          </div>
+            <div class="card-footer text-muted">
+                Пока это заготовка
+            </div>
+        </div>
+    {% end for %}
+
+{% endblock %}
