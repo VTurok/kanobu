@@ -1,14 +1,14 @@
 {% extends 'materials/base.html' %}
 
 {% block title %}
-    Главная - {{ block.super }}
+    {{ name }} - {{ block.super }}
 {% endblock %}
 
 {% block content %}
-<h1 class="mb-5">Главная</h1>
+<h1 class="mb-5">{{ name }}</h1>
     {% for material in materials %}
         <div class="card mb-4">
-          <h5 class="card-header">Тип: {{material.material_type}}; автор: {{ material.author }}; дата публикации: {{ material.date_pub }}</h5>
+          <h5 class="card-header">Тип: {{ material.material_type }}; автор: {{ material.author }}; дата публикации: {{ material.date_pub }}</h5>
           <div class="card-body">
             <h5 class="card-title">{{ material.title }}</h5>
             <p class="card-text">{{ material.body|truncatewords:20 }}</p>
