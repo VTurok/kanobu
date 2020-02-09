@@ -15,5 +15,31 @@
             Пока это заготовка
         </div>
     </div>
+    <div class="card mb-4">
+        <form class="m-4" action="{% url 'comment_add_url' pk=material.pk %}"method="post">
+                {% csrf_token %}
 
+                {% for field in form %}
+                    <div class="form-group">
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        {{ field.label }}
+                        <br>
+                        {{ field }}
+                    </div>
+                {% endfor%}
+                <button type="submit" name="button" class="btn btn-primary">Коментировать</button>
+        </form>
+    </div>
+    {% for comment in comments %}
+    <div class="card mb-4">
+          <h5 class="card-header">Автор: {{ comment.author }}; дата: {{ comment.date_create }}</h5>
+          <div class="card-body">
+            <p class="card-text">{{ comment.body }}</p>
+          </div>
+    </div>
+    {% endfor %}
 {% endblock %}

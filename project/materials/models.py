@@ -22,4 +22,4 @@ class Comment(models.Model):
     material = models.ForeignKey(Material, verbose_name='Материал', on_delete=models.CASCADE)
     author = models.CharField(max_length=20, db_index=True, verbose_name='Автор')
     body = models.CharField(max_length=300, db_index=True, verbose_name='Текст комментария')
-    date_create = models.DateTimeField(auto_created=True, verbose_name='Дата создания')
+    date_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
