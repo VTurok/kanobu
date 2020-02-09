@@ -1,5 +1,7 @@
 from django.urls import path, include
 
+from .views import news_list
+
 urlpatterns = [
-    path('', include('news.urls'), name='news_list_url'),
+    path('', news_list, name='news_list_url'),
 ]

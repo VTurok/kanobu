@@ -6,4 +6,4 @@ from .models import Post
 
 def posts_list(request):
     posts = Post.objects.all()
-    return render(request, 'posts/posts_lists.html', context={'posts': posts})
+    return render(request, 'posts/posts_list.html', context={'posts': posts})
