@@ -12,3 +12,10 @@ class Material(models.Model):
     date_create = models.DateTimeField(auto_created=True, verbose_name='Дата создания')
     date_pub = models.DateTimeField(auto_now=True, verbose_name='Дата публикации')
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
+
+
+class Comment(models.Model):
+    material = models.ForeignKey(Material, verbose_name='Материал', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
+    body = models.CharField(max_length=300, db_index=True, verbose_name='Текст комментария')
+    date_create = models.DateTimeField(auto_created=True, verbose_name='Дата создания')
