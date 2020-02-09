@@ -1,0 +1,19 @@
+{% extends 'materials/base.html' %}
+
+{% block title %}
+    {{material.title}} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="card mb-4">
+        <h5 class="card-header">Тип: {{ material.material_type }}; автор: {{ material.author }}; дата публикации: {{ material.date_pub }}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ material.title }}</h5>
+            <p class="card-text">{{ material.body }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Пока это заготовка
+        </div>
+    </div>
+
+{% endblock %}

@@ -11,6 +11,9 @@ def materials_list(request):
     name = 'Главная'
     return render(request, 'materials/materials_list.html', context={'materials': materials, 'name': name})
 
+def material_detail(request, pk):
+    material = Material.objects.get(pk=pk)
+    return render(request, 'materials/material_detail.html', context={'material': material})
 
 class MaterialCreate(View):
     def get(self, request):

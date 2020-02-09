@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -12,6 +13,9 @@ class Material(models.Model):
     date_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     date_pub = models.DateTimeField(auto_now=True, verbose_name='Дата публикации')
     author = models.CharField(max_length=20, db_index=True, verbose_name='Автор')
+
+    def get_absolute_url(self):
+        return reverse('material_detail_url', kwargs={'pk': self.pk})
 
 
 class Comment(models.Model):
