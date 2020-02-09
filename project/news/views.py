@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import View
 
-# Create your views here.
+from .models import News
+
+
+def posts_list(request):
+    news = News.objects.all()
+    return render(request, 'posts/posts_lists.html', context={'news': news})
