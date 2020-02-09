@@ -5,17 +5,17 @@ User = get_user_model()
 
 # Create your models here.
 class Material(models.Model):
-    TYPES = [('news',  'Новость'), ('article', 'Статья')]
+    TYPES = [('Новость',  'Новость'), ('Статья', 'Статья')]
     title = models.CharField(max_length=150, db_index=True, verbose_name='Заголовок')
     material_type = models.CharField(max_length=7, choices=TYPES, verbose_name='Тип материала')
     body = models.TextField(blank=True, db_index=True, verbose_name='Текст новости')
-    date_create = models.DateTimeField(auto_created=True, verbose_name='Дата создания')
+    date_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     date_pub = models.DateTimeField(auto_now=True, verbose_name='Дата публикации')
-    author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
+    author = models.CharField(max_length=20, db_index=True, verbose_name='Автор')
 
 
 class Comment(models.Model):
     material = models.ForeignKey(Material, verbose_name='Материал', on_delete=models.CASCADE)
-    author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
+    author = models.CharField(max_length=20, db_index=True, verbose_name='Автор')
     body = models.CharField(max_length=300, db_index=True, verbose_name='Текст комментария')
     date_create = models.DateTimeField(auto_created=True, verbose_name='Дата создания')
