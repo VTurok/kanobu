@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1 class="mb-5">{{ name }}</h1>
-    {% for material in materials %}
+    {% for material in page_object.object_list %}
         <div class="card mb-4">
           <h5 class="card-header">Тип: {{ material.material_type }}; автор: {{ material.author }}; дата публикации: {{ material.date_pub }}</h5>
           <div class="card-body">

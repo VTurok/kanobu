@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
 from django.shortcuts import redirect
+from django.core.paginator import Paginator
 
 from .models import Material, Comment
 from .forms import MaterialForm, CommentForm
@@ -14,11 +15,14 @@ def materials_list(request):
     :return:
     """
     materials = Material.objects.all()
+    paginator = Paginator(materials, 2)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
     name = "Главная"
     return render(
         request,
         "materials/materials_list.html",
-        context={"materials": materials, "name": name},
+        context={"page_object": page, "name": name},
     )
 
 
