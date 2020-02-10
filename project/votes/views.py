@@ -13,10 +13,8 @@ class VotesView(View):
 
     def post(self, request, pk):
         obj = self.model.objects.get(pk=pk)
-        # GenericForeignKey не поддерживает метод get_or_create
         try:
-            likedislike = LikeDislike.objects.get(content_type=ContentType.objects.get_for_model(obj), object_id=obj.id,
-                                                  user=request.user)
+            likedislike = LikeDislike.objects.get(content_type=ContentType.objects.get_for_model(obj), object_id=obj.id)
             if likedislike.vote is not self.vote_type:
                 likedislike.vote = self.vote_type
                 likedislike.save(update_fields=['vote'])
@@ -25,9 +23,8 @@ class VotesView(View):
                 likedislike.delete()
                 result = False
         except LikeDislike.DoesNotExist:
-            obj.votes.create(user=request.user, vote=self.vote_type)
+            obj.votes.create(vote=self.vote_type)
             result = True
-
         return HttpResponse(
             json.dumps({
                 "result": result,

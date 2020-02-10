@@ -18,11 +18,27 @@ def materials_list(request):
     paginator = Paginator(materials, 2)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
+    is_paginated = page.has_other_pages()
+    if page.has_previous():
+        prev_url = '?page={}'.format(page.previous_page_number())
+    else:
+        prev_url = ''
+    if page.has_next():
+        next_url = '?page={}'.format(page.next_page_number())
+    else:
+        next_url = ''
     name = "Главная"
+    context = {
+        'page_object': page,
+        'is_paginated': is_paginated,
+        'prev_url': prev_url,
+        'next_url': next_url,
+        'name': name,
+    }
     return render(
         request,
         "materials/materials_list.html",
-        context={"page_object": page, "name": name},
+        context=context,
     )
 
 
@@ -39,10 +55,28 @@ def material_detail(request, pk):
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
     form = CommentForm()
+    is_paginated = page.has_other_pages()
+    if page.has_previous():
+        prev_url = '?page={}'.format(page.previous_page_number())
+    else:
+        prev_url = ''
+    if page.has_next():
+        next_url = '?page={}'.format(page.next_page_number())
+    else:
+        next_url = ''
+
+    context = {
+        'material': material,
+        'page_object': page,
+        'form': form,
+        'is_paginated': is_paginated,
+        'prev_url': prev_url,
+        'next_url': next_url,
+    }
     return render(
         request,
         "materials/material_detail.html",
-        context={"material": material, "page_object": page, "form": form},
+        context=context,
     )
 
 

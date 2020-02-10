@@ -12,6 +12,16 @@
             <p class="card-text">{{ material.body }}</p>
         </div>
         <div class="card-footer text-muted">
+            <ul>
+                <li data-id="{{ material.pk }}" data-type="article" data-action="like" title="Нравится">
+                    <span class="fa fa-thumbs-up"></span>
+                    <span data-count="like">{{ material.votes.likes.count }}</span>
+                </li>
+                <li data-id="{{ material.pk }}" data-type="article" data-action="dislike" title="Не нравится">
+                    <span class="fa fa-thumbs-down"></span>
+                    <span data-count="dislike">{{ material.votes.dislikes.count }}</span>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="card mb-4">
@@ -34,11 +44,23 @@
         </form>
     </div>
     {% for comment in page_object.object_list %}
-    <div class="card mb-4">
-          <h5 class="card-header">Автор: {{ comment.author }}; дата: {{ comment.date_create }}</h5>
-          <div class="card-body">
-            <p class="card-text">{{ comment.body }}</p>
-          </div>
+    <div class="card mb-1">
+        <h5 class="card-header">Автор: {{ comment.author }}; дата: {{ comment.date_create }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ comment.body }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            <ul>
+                <li data-id="{{ comment.pk }}" data-type="article" data-action="like" title="Нравится">
+                    <span class="fa fa-thumbs-up"></span>
+                    <span data-count="like">{{ comment.votes.likes.count }}</span>
+                </li>
+                <li data-id="{{ material.pk }}" data-type="article" data-action="dislike" title="Не нравится">
+                    <span class="fa fa-thumbs-down"></span>
+                    <span data-count="dislike">{{ comment.votes.dislikes.count }}</span>
+                </li>
+            </ul>
+        </div>
     </div>
     {% endfor %}
 {% endblock %}
