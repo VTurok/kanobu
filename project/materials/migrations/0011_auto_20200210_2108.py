@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('materials', '0010_auto_20200210_2104'),
+        ("materials", "0010_auto_20200210_2104"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='comment',
-            name='body',
-            field=models.CharField(db_index=True, max_length=300, verbose_name='Текст комментария'),
+            model_name="comment",
+            name="body",
+            field=models.CharField(
+                db_index=True, max_length=300, verbose_name="Текст комментария"
+            ),
         ),
     ]

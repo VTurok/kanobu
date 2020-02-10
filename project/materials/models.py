@@ -13,6 +13,7 @@ class Material(models.Model):
     """
     Класс описывающий модель материалов
     """
+
     TYPES = [("Новость", "Новость"), ("Статья", "Статья")]
     title = models.CharField(max_length=150, db_index=True, verbose_name="Заголовок")
     material_type = models.CharField(
@@ -28,13 +29,14 @@ class Material(models.Model):
         return reverse("material_detail_url", kwargs={"pk": self.pk})
 
     class Meta:
-        ordering = ['-date_pub']
+        ordering = ["-date_pub"]
 
 
 class Comment(models.Model):
     """
     Класс описывающий модель комментариев
     """
+
     material = models.ForeignKey(
         Material, verbose_name="Материал", on_delete=models.CASCADE
     )
@@ -46,4 +48,4 @@ class Comment(models.Model):
     votes = GenericRelation(LikeDislike, related_query_name="комментарии")
 
     class Meta:
-        ordering = ['date_create']
+        ordering = ["date_create"]

@@ -6,16 +6,14 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('materials', '0008_auto_20200210_0143'),
+        ("materials", "0008_auto_20200210_0143"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='comment',
-            options={'ordering': ['date_create']},
+            name="comment", options={"ordering": ["date_create"]},
         ),
         migrations.AlterModelOptions(
-            name='material',
-            options={'ordering': ['-date_pub']},
+            name="material", options={"ordering": ["-date_pub"]},
         ),
     ]
