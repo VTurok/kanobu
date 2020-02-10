@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  web:
+    container_name: kanobu
+    build: ./
+    command: python3 manage.py runserver 0.0.0.0:3000
+    volumes:
+    - .:/project
+    ports:
+      - 8000:3000
