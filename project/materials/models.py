@@ -27,6 +27,9 @@ class Material(models.Model):
     def get_absolute_url(self):
         return reverse("material_detail_url", kwargs={"pk": self.pk})
 
+    class Meta:
+        ordering = ['-date_pub']
+
 
 class Comment(models.Model):
     """
@@ -41,3 +44,6 @@ class Comment(models.Model):
     )
     date_create = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     votes = GenericRelation(LikeDislike, related_query_name="комментарии")
+
+    class Meta:
+        ordering = ['date_create']
