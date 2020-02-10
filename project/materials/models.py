@@ -10,6 +10,9 @@ from votes.models import LikeDislike
 
 # Create your models here.
 class Material(models.Model):
+    """
+    Класс описывающий модель материалов
+    """
     TYPES = [("Новость", "Новость"), ("Статья", "Статья")]
     title = models.CharField(max_length=150, db_index=True, verbose_name="Заголовок")
     material_type = models.CharField(
@@ -26,6 +29,9 @@ class Material(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Класс описывающий модель комментариев
+    """
     material = models.ForeignKey(
         Material, verbose_name="Материал", on_delete=models.CASCADE
     )

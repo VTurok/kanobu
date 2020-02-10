@@ -6,6 +6,9 @@ from .managers import LikeDislikeManager
 
 
 class LikeDislike(models.Model):
+    """
+    Класс описывающий модель лайков и дизлайков
+    """
     LIKE = 1
     DISLIKE = -1
 

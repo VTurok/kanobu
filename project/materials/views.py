@@ -8,6 +8,11 @@ from .forms import MaterialForm, CommentForm
 
 
 def materials_list(request):
+    """
+    Функция вывода материалов списком
+    :param request:
+    :return:
+    """
     materials = Material.objects.all()
     name = "Главная"
     return render(
@@ -18,6 +23,12 @@ def materials_list(request):
 
 
 def material_detail(request, pk):
+    """
+    Функция вывода полной версии материала с комментариями
+    :param request:
+    :param pk:
+    :return:
+    """
     material = get_object_or_404(Material, pk=pk)
     # material = Material.objects.get(pk=pk)
     comments = material.comment_set.all()
@@ -30,6 +41,12 @@ def material_detail(request, pk):
 
 
 def comment_add(request, pk):
+    """
+    Функция, обрабатывающия добавление коментария
+    :param request:
+    :param pk: int
+    :return:
+    """
     bound_form = CommentForm(request.POST)
     material = get_object_or_404(Material, pk=pk)
     if bound_form.is_valid():
@@ -42,6 +59,9 @@ def comment_add(request, pk):
 
 
 class MaterialCreate(View):
+    """
+    Класс для создания материала
+    """
     def get(self, request):
         form = MaterialForm()
         return render(
