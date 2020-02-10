@@ -9,10 +9,7 @@ class LikeDislike(models.Model):
     LIKE = 1
     DISLIKE = -1
 
-    VOTES = (
-        (DISLIKE, 'Не нравится'),
-        (LIKE, 'Нравится')
-    )
+    VOTES = ((DISLIKE, "Не нравится"), (LIKE, "Нравится"))
 
     vote = models.SmallIntegerField(verbose_name=_("Голос"), choices=VOTES)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -20,4 +17,3 @@ class LikeDislike(models.Model):
     content_object = GenericForeignKey()
 
     objects = LikeDislikeManager()
-

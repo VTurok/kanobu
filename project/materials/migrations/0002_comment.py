@@ -9,18 +9,50 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('materials', '0001_initial'),
+        ("materials", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_create', models.DateTimeField(auto_created=True, verbose_name='Дата создания')),
-                ('body', models.CharField(db_index=True, max_length=300, verbose_name='Текст комментария')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
-                ('material', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='materials.Material', verbose_name='Материал')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date_create",
+                    models.DateTimeField(
+                        auto_created=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "body",
+                    models.CharField(
+                        db_index=True, max_length=300, verbose_name="Текст комментария"
+                    ),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Автор",
+                    ),
+                ),
+                (
+                    "material",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="materials.Material",
+                        verbose_name="Материал",
+                    ),
+                ),
             ],
         ),
     ]

@@ -15,15 +15,55 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Material',
+            name="Material",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_create', models.DateTimeField(auto_created=True, verbose_name='Дата создания')),
-                ('title', models.CharField(db_index=True, max_length=150, verbose_name='Заголовок')),
-                ('material_type', models.CharField(choices=[('news', 'Новость'), ('article', 'Статья')], max_length=7, verbose_name='Тип материала')),
-                ('body', models.TextField(blank=True, db_index=True, verbose_name='Текст новости')),
-                ('date_pub', models.DateTimeField(auto_now=True, verbose_name='Дата публикации')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date_create",
+                    models.DateTimeField(
+                        auto_created=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        db_index=True, max_length=150, verbose_name="Заголовок"
+                    ),
+                ),
+                (
+                    "material_type",
+                    models.CharField(
+                        choices=[("news", "Новость"), ("article", "Статья")],
+                        max_length=7,
+                        verbose_name="Тип материала",
+                    ),
+                ),
+                (
+                    "body",
+                    models.TextField(
+                        blank=True, db_index=True, verbose_name="Текст новости"
+                    ),
+                ),
+                (
+                    "date_pub",
+                    models.DateTimeField(auto_now=True, verbose_name="Дата публикации"),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Автор",
+                    ),
+                ),
             ],
         ),
     ]

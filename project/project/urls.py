@@ -19,7 +19,7 @@ from django.urls import path, include
 from .views import redirect_kanobu
 
 urlpatterns = [
-    path('', redirect_kanobu),
-    path('admin/', admin.site.urls),
-    path('kanobu/', include('materials.urls')),
+    path("", redirect_kanobu),
+    path("admin/", admin.site.urls),
+    path("kanobu/", include("materials.urls")),
 ]
