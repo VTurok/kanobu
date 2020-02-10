@@ -30,7 +30,6 @@ def material_detail(request, pk):
     :return:
     """
     material = get_object_or_404(Material, pk=pk)
-    # material = Material.objects.get(pk=pk)
     comments = material.comment_set.all()
     form = CommentForm()
     return render(
