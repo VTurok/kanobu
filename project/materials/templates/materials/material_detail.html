@@ -12,7 +12,6 @@
             <p class="card-text">{{ material.body }}</p>
         </div>
         <div class="card-footer text-muted">
-            Пока это заготовка
         </div>
     </div>
     <div class="card mb-4">
@@ -34,7 +33,7 @@
                 <button type="submit" name="button" class="btn btn-primary">Комментировать</button>
         </form>
     </div>
-    {% for comment in comments %}
+    {% for comment in page_object.object_list %}
     <div class="card mb-4">
           <h5 class="card-header">Автор: {{ comment.author }}; дата: {{ comment.date_create }}</h5>
           <div class="card-body">

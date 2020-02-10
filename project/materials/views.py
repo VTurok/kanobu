@@ -35,11 +35,14 @@ def material_detail(request, pk):
     """
     material = get_object_or_404(Material, pk=pk)
     comments = material.comment_set.all()
+    paginator = Paginator(comments, 2)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
     form = CommentForm()
     return render(
         request,
         "materials/material_detail.html",
-        context={"material": material, "comments": comments, "form": form},
+        context={"material": material, "page_object": page, "form": form},
     )
 
 
